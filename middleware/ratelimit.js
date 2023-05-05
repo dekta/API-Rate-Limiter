@@ -22,7 +22,7 @@ const RateLimitor = async (req, res, next) => {
                 next()
             } else {
                 await RateModel.findOneAndUpdate({ ip }, { $set: { remainingreq: 0, time: Math.floor(new Date().getTime() / 1000) } })
-                res.status(403).send({ "msg": "blocked for 1 minute" })
+                res.status(403).send( "blocked for 1 minute" )
             }
         }
         else {
